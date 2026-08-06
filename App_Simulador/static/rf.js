@@ -11,3 +11,11 @@ if(event.key === "F12"){
 
         }}
     });
+
+// const input_texto = document.getElementById("entrada");
+
+// // input_texto.addEventListener("input", (dado)=>{
+// //     if(dado.value.length == 10) {
+// //         window.location.href = 'position.html'
+// //     }
+// // })
