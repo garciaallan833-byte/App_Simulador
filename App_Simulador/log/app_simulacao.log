@@ -1,0 +1,145 @@
+2026-08-06 16:37:21,565 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:37:35,550 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:38:43,400 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:38:43,479 [CRITICAL] Erro crítico detectado
+Traceback (most recent call last):
+  File "C:\Users\jkk8x1\OneDrive - DPDHL\Desktop\App_Simulador\app.py", line 123, in <module>
+    socketio.run(app, host="0.0.0.0", port=3000, debug=True, use_reloader=False)
+    ^^^^^^^^
+NameError: name 'socketio' is not defined. Did you mean: 'SocketIO'?
+2026-08-06 16:39:20,461 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:39:20,577 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://7.9.232.134:3000
+2026-08-06 16:39:20,577 [INFO] [33mPress CTRL+C to quit[0m
+2026-08-06 16:39:29,333 [INFO] 127.0.0.1 - - [06/Aug/2026 16:39:29] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2026-08-06 16:39:29,667 [INFO] 127.0.0.1 - - [06/Aug/2026 16:39:29] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2026-08-06 16:39:29,674 [INFO] 127.0.0.1 - - [06/Aug/2026 16:39:29] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2026-08-06 16:39:29,710 [INFO] 127.0.0.1 - - [06/Aug/2026 16:39:29] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=042q0qaRuFGM2FkCcaY0 HTTP/1.1" 200 -
+2026-08-06 16:39:30,056 [INFO] 127.0.0.1 - - [06/Aug/2026 16:39:30] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2026-08-06 16:40:32,680 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:40:32,784 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://7.9.232.134:3000
+2026-08-06 16:40:32,784 [INFO] [33mPress CTRL+C to quit[0m
+2026-08-06 16:40:50,460 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:40:50,748 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://7.9.232.134:3000
+2026-08-06 16:40:50,751 [INFO] [33mPress CTRL+C to quit[0m
+2026-08-06 16:40:57,356 [INFO] 127.0.0.1 - - [06/Aug/2026 16:40:57] "GET / HTTP/1.1" 200 -
+2026-08-06 16:40:57,678 [INFO] 127.0.0.1 - - [06/Aug/2026 16:40:57] "GET /static/script.js HTTP/1.1" 200 -
+2026-08-06 16:40:57,679 [INFO] 127.0.0.1 - - [06/Aug/2026 16:40:57] "GET /static/styles.css HTTP/1.1" 200 -
+2026-08-06 16:40:57,712 [INFO] 127.0.0.1 - - [06/Aug/2026 16:40:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-08-06 16:41:02,590 [INFO] 127.0.0.1 - - [06/Aug/2026 16:41:02] "[33mGET /case.html HTTP/1.1[0m" 404 -
+2026-08-06 16:41:47,299 [CRITICAL] Erro crítico detectado
+Traceback (most recent call last):
+  File "C:\Users\jkk8x1\OneDrive - DPDHL\Desktop\App_Simulador\app.py", line 120, in <module>
+    @app.route("/case", methods=["GET"])
+     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jkk8x1\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\sansio\scaffold.py", line 362, in decorator
+    self.add_url_rule(rule, endpoint, f, **options)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\jkk8x1\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\sansio\scaffold.py", line 47, in wrapper_func
+    return f(self, *args, **kwargs)
+  File "C:\Users\jkk8x1\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\sansio\app.py", line 657, in add_url_rule
+    raise AssertionError(
+    ...<2 lines>...
+    )
+AssertionError: View function mapping is overwriting an existing endpoint function: index
+2026-08-06 16:42:18,314 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:42:18,466 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://7.9.232.134:3000
+2026-08-06 16:42:18,466 [INFO] [33mPress CTRL+C to quit[0m
+2026-08-06 16:42:22,831 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:22] "GET / HTTP/1.1" 200 -
+2026-08-06 16:42:23,159 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:23] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:42:23,163 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:23] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2026-08-06 16:42:26,253 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:26] "[33mGET /case.html HTTP/1.1[0m" 404 -
+2026-08-06 16:42:47,810 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:42:47,950 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://7.9.232.134:3000
+2026-08-06 16:42:47,950 [INFO] [33mPress CTRL+C to quit[0m
+2026-08-06 16:42:50,365 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:50] "GET /case.html HTTP/1.1" 200 -
+2026-08-06 16:42:50,618 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:50] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2026-08-06 16:42:50,695 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:50] "[33mGET /JS/rf.js HTTP/1.1[0m" 404 -
+2026-08-06 16:42:50,695 [INFO] 127.0.0.1 - - [06/Aug/2026 16:42:50] "[33mGET /JS/case.js HTTP/1.1[0m" 404 -
+2026-08-06 16:49:17,646 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:49:17,897 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://7.9.232.134:3000
+2026-08-06 16:49:17,898 [INFO] [33mPress CTRL+C to quit[0m
+2026-08-06 16:49:21,327 [INFO] 127.0.0.1 - - [06/Aug/2026 16:49:21] "GET /case.html HTTP/1.1" 200 -
+2026-08-06 16:49:21,662 [INFO] 127.0.0.1 - - [06/Aug/2026 16:49:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:49:21,754 [INFO] 127.0.0.1 - - [06/Aug/2026 16:49:21] "GET /static/case.js HTTP/1.1" 200 -
+2026-08-06 16:49:21,761 [INFO] 127.0.0.1 - - [06/Aug/2026 16:49:21] "GET /static/rf.js HTTP/1.1" 200 -
+2026-08-06 16:49:23,775 [INFO] 127.0.0.1 - - [06/Aug/2026 16:49:23] "[33mGET /index.html HTTP/1.1[0m" 404 -
+2026-08-06 16:50:15,299 [INFO] [032mApp Simulação Inicializado[m
+2026-08-06 16:50:15,449 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3000
+ * Running on http://7.9.232.134:3000
+2026-08-06 16:50:15,450 [INFO] [33mPress CTRL+C to quit[0m
+2026-08-06 16:50:19,176 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:19] "[33mGET / HTTP/1.1[0m" 404 -
+2026-08-06 16:50:26,119 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:26] "GET /index.html HTTP/1.1" 200 -
+2026-08-06 16:50:26,561 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:26,567 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:26] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:28,997 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:28] "GET /case.html HTTP/1.1" 200 -
+2026-08-06 16:50:29,339 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:29,340 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:29] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:29,340 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:29] "[36mGET /static/case.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:30,192 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:30] "GET /index.html HTTP/1.1" 200 -
+2026-08-06 16:50:30,525 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:30,525 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:30] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:36,660 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:36] "GET /case.html HTTP/1.1" 200 -
+2026-08-06 16:50:36,995 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:36,996 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:36] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:36,996 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:36] "[36mGET /static/case.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:38,487 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:38] "GET /pickingFRC.html HTTP/1.1" 200 -
+2026-08-06 16:50:38,824 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:38,824 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:38] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:38,861 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:38] "GET /static/pickingFRC.js HTTP/1.1" 200 -
+2026-08-06 16:50:42,420 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:42] "GET /position.html HTTP/1.1" 200 -
+2026-08-06 16:50:42,750 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:42,751 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:42] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:42,788 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:42] "GET /static/position.js HTTP/1.1" 200 -
+2026-08-06 16:50:49,921 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:49] "GET /quant.html HTTP/1.1" 200 -
+2026-08-06 16:50:50,259 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:50] "GET /static/quant.js HTTP/1.1" 200 -
+2026-08-06 16:50:50,259 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:50,260 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:50] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:51,956 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:51] "GET /carton.html HTTP/1.1" 200 -
+2026-08-06 16:50:52,287 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:50:52,293 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:52] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:50:52,294 [INFO] 127.0.0.1 - - [06/Aug/2026 16:50:52] "GET /static/carton.js HTTP/1.1" 200 -
+2026-08-06 16:51:06,306 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:06] "GET /conf.html HTTP/1.1" 200 -
+2026-08-06 16:51:06,643 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:51:06,643 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:06] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:51:06,680 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:06] "GET /static/conf.js HTTP/1.1" 200 -
+2026-08-06 16:51:44,887 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:44] "GET /stage.html HTTP/1.1" 200 -
+2026-08-06 16:51:45,221 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:51:45,222 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:45] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:51:45,223 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:45] "GET /static/stage.js HTTP/1.1" 200 -
+2026-08-06 16:51:59,146 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:59] "GET /pickingFRC.html HTTP/1.1" 200 -
+2026-08-06 16:51:59,483 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:51:59,484 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:59] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:51:59,484 [INFO] 127.0.0.1 - - [06/Aug/2026 16:51:59] "[36mGET /static/pickingFRC.js HTTP/1.1[0m" 304 -
+2026-08-06 16:52:01,626 [INFO] 127.0.0.1 - - [06/Aug/2026 16:52:01] "GET /case.html HTTP/1.1" 200 -
+2026-08-06 16:52:01,956 [INFO] 127.0.0.1 - - [06/Aug/2026 16:52:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:52:01,962 [INFO] 127.0.0.1 - - [06/Aug/2026 16:52:01] "[36mGET /static/rf.js HTTP/1.1[0m" 304 -
+2026-08-06 16:52:01,966 [INFO] 127.0.0.1 - - [06/Aug/2026 16:52:01] "[36mGET /static/case.js HTTP/1.1[0m" 304 -
+2026-08-06 16:52:03,347 [INFO] 127.0.0.1 - - [06/Aug/2026 16:52:03] "GET /index.html HTTP/1.1" 200 -
+2026-08-06 16:52:03,688 [INFO] 127.0.0.1 - - [06/Aug/2026 16:52:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:52:03,689 [INFO] 127.0.0.1 - - [06/Aug/2026 16:52:03] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2026-08-06 16:55:36,959 [INFO] 7.9.224.93 - - [06/Aug/2026 16:55:36] "GET /index.html HTTP/1.1" 200 -
+2026-08-06 16:55:37,162 [INFO] 7.9.224.93 - - [06/Aug/2026 16:55:37] "GET /static/styles.css HTTP/1.1" 200 -
+2026-08-06 16:55:37,217 [INFO] 7.9.224.93 - - [06/Aug/2026 16:55:37] "GET /static/script.js HTTP/1.1" 200 -
+2026-08-06 16:55:39,346 [INFO] 7.9.224.93 - - [06/Aug/2026 16:55:39] "GET /index.html HTTP/1.1" 200 -
+2026-08-06 16:55:39,517 [INFO] 7.9.224.93 - - [06/Aug/2026 16:55:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2026-08-06 16:55:39,537 [INFO] 7.9.224.93 - - [06/Aug/2026 16:55:39] "[36mGET /static/script.js HTTP/1.1[0m" 304 -

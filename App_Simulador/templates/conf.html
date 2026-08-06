@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferência</title>
+
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+
+<body>
+
+<div class="coletor">
+
+    <div class="topo">
+        <span id="hora"></span>
+        <span>🔋78%</span>
+    </div>
+
+    <div class="conteudo">
+
+        <div class="titulo-audit">
+            Audit SKU/Lot
+        </div>
+
+    <div class="linha-info">
+        <span>Task:</span>
+        <span class="codigo" id="task"></span>
+    </div>
+
+    <div class="linha-info">
+        <span>SKU:</span>
+    </div>
+
+    <div class="linha-input">
+        <input
+            type="text"
+            id="sku"
+            class="audit-sku"
+            maxlength="10"
+            autofocus
+            >
+    </div>
+
+        <div style="margin-top:12px;">
+
+            <span>Lot:</span>
+
+            <input
+                type="text"
+                id="lot"
+                class="audit-lot"
+                maxlength="20"
+            >
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="./static/rf.js"></script>
+<script src="./static/conf.js"></script>
+
+</body>
+</html>

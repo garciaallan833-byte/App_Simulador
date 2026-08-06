@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carton</title>
+
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+
+<body>
+
+<div class="coletor">
+
+    <div class="topo">
+        <span id="hora"></span>
+        <span>🔋78%</span>
+    </div>
+
+    <div class="conteudo">
+
+        <div class="linha-info">
+            <span>SKU:</span>
+            <span class="codigo">H2253608</span>
+            
+            <br>
+            <span class="espaco"></span>
+            <span class="espaco"></span>
+            <span class="texto-branco">UOM: IP</span>
+        </div>
+
+        <div class="linha-info">
+            <span>Qt:</span>
+
+            <span class="espaco"></span>
+
+            <span class="codigo">      1</span>
+
+
+            <input
+                type="text"
+                id="entrada"
+                class="qty-carton-pqn"
+                maxlength="2"
+                value="1"
+                readonly
+            >
+        </div>
+
+        <br>
+
+        <div class="linha-info">
+            <span>Carton Number:</span>
+        </div>
+
+        <div class="linha-info">
+            <span class="codigo">
+                00000203200764777551
+            </span>
+        </div>
+
+        <br>
+
+        <input
+            type="text"
+            id="carton"
+            class="qty-carton"
+            maxlength="20"
+            autofocus
+        >
+
+    </div>
+
+</div>
+
+<script src="./static/rf.js"></script>
+<script src="./static/carton.js"></script>
+
+</body>
+</html>

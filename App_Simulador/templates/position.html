@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Position</title>
+
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+
+<body>
+
+<div class="coletor">
+
+        <div class="topo">
+            <span id="hora"></span>
+            <span id="bateria">🔋78%</span>
+        </div>
+
+    <div class="conteudo">
+
+        <div class="linha-info">
+            <span>LC:</span>
+            <span class="codigo">CK-047-01</span>
+
+            <span class="codigo">SKU:</span>
+            <span class="codigo">H2253608</span>
+        </div>
+
+
+        <div class="linha-info">
+            <span class="espaco"></span>
+            <span>Total:</span>
+
+            <span class="espaco"></span>
+
+            <span class="codigo">1</span>
+        </div>
+
+
+        <div class="linha-info">
+            <span>TBP:</span>
+            <span class="espaco"></span>
+            <span class="codigo">1</span>
+        </div>
+
+
+        <div class="linha-info">
+            <span class="texto-branco">UM/Qt:</span>
+
+            <span class="texto-branco">&nbsp;IP&nbsp;6.00</span>
+
+
+            <span class="codigo"> Cart:</span>
+            <span class="codigo">0002886347</span>
+        </div>
+        
+        <div class="linha" style="margin-top:8px;">
+        <span class="codigo">LC:</span>
+
+    <input
+        type="text"
+        id="entrada"
+        class="qty-grande"
+        maxlength="10"
+        autofocus
+    >
+
+    <input
+        type="text"
+        id="digito"
+        class="qty-pequeno"
+        maxlength="2"
+    >
+</div>
+
+</div>
+
+<script src="./static/rf.js"></script>
+<script src="./static/position.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador MHT - Case Picking</title>
+
+    <link rel="stylesheet" href="./static/styles.css">
+</head>
+<body>
+
+    <div class ="coletor">
+
+        <div class="topo">
+            <span id="hora"></span>
+            <span id="bateria">🔋78%</span>
+        </div>
+
+        <div class="conteudo" id="tela">
+            
+            <div class="linha">
+                <span class="numero">1</span>
+                <span class="texto">INBOUND</span>
+            </div>
+
+            <div class="linha">
+                <span class="numero">2</span>
+                <span class="texto">CASE</span>
+            </div>
+            <div class="linha">
+                <span class="numero">3</span>
+                <span class="texto">UNIT</span>
+            </div>
+            <div class="linha">
+                <span class="numero">4</span>
+                <span class="texto">OUTBOUND</span>
+            </div>
+            <div class="linha">
+                <span class="numero">5</span>
+                <span class="texto">SLOTTING E DROP</span>
+            </div>
+            <div class="linha">
+                <span class="numero">6</span>
+                <span class="texto">RF - LMS</span>
+            </div>
+                
+            <br>
+
+            <div class="area-inferior">
+
+                <div class="esquerda">
+                    <span>DDC/LOR</span>
+                </div>
+                    <span class="lojp">LOJP</span>
+            </div>    
+            
+            <div class="area-direita">
+                    <div class="entrada">
+                        <span class="prompt">S =&gt;</span>
+                        <input type="text" id="entrada" maxlength="2" autofocus>
+                    </div>
+
+            </div>    
+        </div>
+
+    </div>
+
+    <script src="./static/script.js"></script>
+</body>
+</html>
+
+            
