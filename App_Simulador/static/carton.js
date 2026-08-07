@@ -34,3 +34,22 @@ carton.addEventListener("keydown", function(event){
     }
 
 });
+
+entrada.addEventListener("focus", () => {
+    entrada.blue();
+    entrada.focus();
+});
+
+carton.addEventListener("input", function() {
+
+    const valor = carton.value.trim();
+    if(valor.length === cartonCorreto.length){
+        if(valor === cartonCorreto){
+            // próxima tela
+            window.location.href = "conf.html";
+        }else{
+            carton.value = "";
+            carton.focus();
+        }
+    }
+});

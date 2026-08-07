@@ -37,3 +37,8 @@ if(entrada){
     });
 
 }
+
+entrada.addEventListener("focus", () => {
+    entrada.blue();
+    entrada.focus();
+});

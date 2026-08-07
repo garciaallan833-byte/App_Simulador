@@ -240,3 +240,10 @@ input:focus{
 .linha-input{
     margin-top: 2px;
 }
+
+.codigo.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}

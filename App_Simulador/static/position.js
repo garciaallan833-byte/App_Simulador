@@ -50,3 +50,20 @@ digito.addEventListener("keydown", function(event) {
         validar();
     }
 });
+
+entrada.addEventListener("focus", () => {
+    entrada.blue();
+    entrada.focus();
+});
+
+entrada.addEventListener("input", function() {
+    if(entrada.value.trim().length === 7){
+        digito.focus();
+    }
+});
+
+digito.addEventListener("input", function() {
+    if(digito.value.trim().length === 2){
+        validar();
+    }
+});    

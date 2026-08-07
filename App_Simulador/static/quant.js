@@ -34,3 +34,18 @@ entrada.addEventListener("keydown", function(event){
     }
 
 });
+
+entrada.addEventListener("focus", () => {
+    entrada.blur();
+    entrada.focus();
+});
+
+entrada.addEventListener("input", function() {
+
+    const valor = entrada.value.trim();
+
+    if(valor === "1"){
+        window.location.href = "carton.html";
+        
+    }
+});    

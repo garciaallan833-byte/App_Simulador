@@ -37,3 +37,9 @@ if(entrada){
     });
 
 }
+
+entrada.addEventListener("input", function() {
+    if(entrada.value.trim().length === 1){
+        validar();
+    }
+});  

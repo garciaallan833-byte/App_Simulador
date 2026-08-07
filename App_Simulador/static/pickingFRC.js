@@ -40,3 +40,17 @@ entrada.addEventListener("keydown", function(event){
     }
 
 });
+
+entrada.addEventListener("focus", () => {
+    entrada.blue();
+    entrada.focus();
+});
+
+entrada.addEventListener("input", function() {
+    const valor = entrada.value.trim();
+
+    if(/^\d{10}$/.test(valor)){
+        sessionStorage.setItem("task", valor);
+        window.location.href = "position.html";
+    }
+})

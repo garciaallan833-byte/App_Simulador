@@ -53,3 +53,27 @@ lc.addEventListener("keydown", function(event){
     }
 
 });
+
+entrada.addEventListener("focus", () => {
+    entrada.blue();
+    entrada.focus();
+});
+
+stage.addEventListener("input", function() {
+    if(stage.value.trim().length === 7){
+        lc.focus();
+    }
+});
+
+lc.addEventListener("input", function() {
+    if(lc.value.trim().length === 2){
+        
+        if(/^[A-Z][0-9]$/.test(lc.value.trim().toUpperCase())){
+            // próxima tela
+            window.location.href = "pickingFRC.html";
+        }else{
+            lc.value = "";
+            lc.focus();
+        }
+    }
+});  

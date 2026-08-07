@@ -1,16 +1,21 @@
-function atualizarHora(){
+function atualizarHora() {
 
     const agora = new Date();
 
     const hora = String(agora.getHours()).padStart(2,"0");
     const minuto = String(agora.getMinutes()).padStart(2,"0");
 
-    document.getElementById("hora").textContent = hora + ":" + minuto;
+    const relogio = document.getElementById("hora");
+
+    if(relogio){
+        relogio.textContent = hora + ":" + minuto;
+    }
 
 }
 
 setInterval(atualizarHora,1000);
 atualizarHora();
+
 
 const task = sessionStorage.getItem("task");
 
@@ -60,4 +65,46 @@ lot.addEventListener("keydown", function(event){
 
     }
 
+});
+
+entrada.addEventListener("focus", () => {
+    entrada.blur();
+    entrada.focus();
+});
+
+const sku = document.getElementById("sku");
+const lot = document.getElementById("lot");
+
+const skuCorreto = "H2253608";
+
+sku.addEventListener("input", function() {
+
+    const valor = sku.value.trim().toUpperCase();
+
+    if(valor.length === skuCorreto.length){
+
+        if(valor === skuCorreto){
+            lot.focus();
+        }else{
+            sku.value = "";
+            sku.focus();
+        }
+    }
+});
+
+const lotCorreto = "58YD3K";
+
+lot.addEventListener("input", function() {
+
+    const valor = lot.value.trim().toUpperCase();
+
+    if(valor.length === lotCorreto.length){
+        if(valor === lotCorreto){
+            // próxima tela
+            window.location.href = "stage.html";
+        }else{
+            lot.value = "";
+            lot.focus();
+        }
+    }
 });
