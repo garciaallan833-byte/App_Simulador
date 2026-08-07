@@ -54,10 +54,6 @@ lc.addEventListener("keydown", function(event){
 
 });
 
-entrada.addEventListener("focus", () => {
-    entrada.blue();
-    entrada.focus();
-});
 
 stage.addEventListener("input", function() {
     if(stage.value.trim().length === 7){

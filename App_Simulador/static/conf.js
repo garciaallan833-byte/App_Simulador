@@ -17,6 +17,7 @@ setInterval(atualizarHora,1000);
 atualizarHora();
 
 
+
 const task = sessionStorage.getItem("task");
 
 if(task){
@@ -65,17 +66,13 @@ lot.addEventListener("keydown", function(event){
 
     }
 
-});
+}); 
 
-entrada.addEventListener("focus", () => {
-    entrada.blur();
-    entrada.focus();
-});
 
-const sku = document.getElementById("sku");
-const lot = document.getElementById("lot");
+// const sku = document.getElementById("sku");
+// const lot = document.getElementById("lot");
 
-const skuCorreto = "H2253608";
+// const skuCorreto = "H2253608";
 
 sku.addEventListener("input", function() {
 
@@ -92,7 +89,7 @@ sku.addEventListener("input", function() {
     }
 });
 
-const lotCorreto = "58YD3K";
+// const lotCorreto = "58YD3K";
 
 lot.addEventListener("input", function() {
 
