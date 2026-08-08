@@ -18,27 +18,31 @@ atualizarHora();
 
 const entrada = document.getElementById("entrada");
 
-if(entrada){
+entrada.addEventListener("keydown", function(event){
 
-    entrada.addEventListener("keydown",function(event){
+    if(event.key !== "Enter") return;
 
-        if(event.key!="Enter") return;
+    const valor = entrada.value.trim();
 
-        switch(entrada.value){
+    if (valor === "1") {
+        
+        sessionStorage.setItem("tipoTarefa", "fracionada");
+        
+        window.location.href = "pickingFRC.html";
 
-            case "1":
-                window.location.href="pickingFRC.html";
-                break;
+    } else if (valor === "2") {
 
-            default:
-                entrada.value="";
-        }
+        sessionStorage.setItem("tipoTarefa", "direta");
 
-    });
+        window.location.href = "pickingDRT.html";
+    } else {
+        entrada.value = "";
+        entrada.focus();
+    }
 
-}
+});
 
 entrada.addEventListener("focus", () => {
-    entrada.blue();
+    entrada.blur();
     entrada.focus();
 });

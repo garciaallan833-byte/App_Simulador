@@ -1,79 +1,117 @@
-function atualizarHora(){
+// ===============================
+// RELÓGIO
+// ===============================
+
+function atualizarHora() {
 
     const agora = new Date();
 
-    const hora = String(agora.getHours()).padStart(2,"0");
-    const minuto = String(agora.getMinutes()).padStart(2,"0");
+    const hora = String(agora.getHours()).padStart(2, "0");
+    const minuto = String(agora.getMinutes()).padStart(2, "0");
 
-    document.getElementById("hora").textContent = hora + ":" + minuto;
+    const relogio = document.getElementById("hora");
 
+    if (relogio) {
+        relogio.textContent = hora + ":" + minuto;
+    }
 }
 
-setInterval(atualizarHora,1000);
+setInterval(atualizarHora, 1000);
 atualizarHora();
+
+
+// ===============================
+// CAMPOS
+// ===============================
 
 const stage = document.getElementById("stage");
 const lc = document.getElementById("lc");
 
+
+// ===============================
+// TIPO DA TAREFA
+// ===============================
+
+const tipoTarefa = sessionStorage.getItem("tipoTarefa");
+
+
+// ===============================
+// STAGE CORRETO
+// ===============================
+
 const stageCorreto = "STG0641";
 
-stage.addEventListener("keydown", function(event){
 
-    if(event.key !== "Enter") return;
+// ===============================
+// STAGE
+// ===============================
 
-    if(stage.value.trim().toUpperCase() === stageCorreto){
+stage.addEventListener("input", function () {
 
-        lc.focus();
+    const valor = stage.value.trim().toUpperCase();
 
-    }else{
+    // STG0641 = 7 caracteres
+    if (valor.length === stageCorreto.length) {
 
-        stage.value = "";
-        stage.focus();
+        if (valor === stageCorreto) {
 
+            // Stage correto → vai para LC
+            lc.focus();
+
+        } else {
+
+            // Stage incorreto
+            stage.value = "";
+            stage.focus();
+
+        }
     }
 
 });
 
-lc.addEventListener("keydown", function(event){
 
-    if(event.key !== "Enter") return;
+// ===============================
+// LC
+// ===============================
+
+lc.addEventListener("input", function () {
 
     const valor = lc.value.trim().toUpperCase();
 
-    if(/^[A-Z][0-9]$/.test(valor)){
+    // H7 = 2 caracteres
+    if (valor.length === 2) {
 
-        // próxima tela
-        window.location.href = "pickingFRC.html";
+        // Sempre letra + número
+        if (/^[A-Z][0-9]$/.test(valor)) {
 
-    }else{
+            // ===============================
+            // FINALIZA A TAREFA
+            // ===============================
 
-        lc.value = "";
-        lc.focus();
+            if (tipoTarefa === "direta") {
 
-    }
+                // Tarefa DRT
+                window.location.href = "pickingDRT.html";
 
-});
+            } else if (tipoTarefa === "fracionada") {
 
-entrada.addEventListener("focus", () => {
-    entrada.blue();
-    entrada.focus();
-});
+                // Tarefa FRC
+                window.location.href = "pickingFRC.html";
 
-stage.addEventListener("input", function() {
-    if(stage.value.trim().length === 7){
-        lc.focus();
-    }
-});
+            } else {
 
-lc.addEventListener("input", function() {
-    if(lc.value.trim().length === 2){
-        
-        if(/^[A-Z][0-9]$/.test(lc.value.trim().toUpperCase())){
-            // próxima tela
-            window.location.href = "pickingFRC.html";
-        }else{
+                // Caso não exista tipo definido
+                window.location.href = "../index.html";
+
+            }
+
+        } else {
+
+            // LC incorreto
             lc.value = "";
             lc.focus();
+
         }
     }
-});  
+
+});

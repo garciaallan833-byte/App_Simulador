@@ -40,12 +40,21 @@ entrada.addEventListener("focus", () => {
     entrada.focus();
 });
 
+const tipoTarefa = sessionStorage.getItem("tipoTarefa");
+
 entrada.addEventListener("input", function() {
 
     const valor = entrada.value.trim();
 
-    if(valor === "1"){
-        window.location.href = "carton.html";
-        
+    if (valor === "1") {
+
+        if (tipoTarefa === "fracionada") {
+
+            window.location.href = "carton.html";
+
+        } else if (tipoTarefa === "direta") {
+
+            window.location.href = "conf.html";
+        }
     }
-});    
+});

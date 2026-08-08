@@ -3,6 +3,9 @@ if(event.key === "F12"){
     if(window.location.pathname.endsWith("pickingFRC.html")){
         event.preventDefault();
         window.location.href = "case.html";
+    } else if (window.location.pathname.endsWith("pickingDRT.html")) {
+        event.preventDefault();
+        window.location.href = "case.html";
     } else if (window.location.pathname.endsWith("case.html")) {
             window.location.href = "../templates/index.html";
         } else {

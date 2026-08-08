@@ -1,0 +1,56 @@
+function atualizarHora() {
+
+    const agora = new Date();
+
+    const hora = String(agora.getHours()).padStart(2, "0");
+    const minuto = String(agora.getMinutes()).padStart(2, "0");
+
+    const relogio = document.getElementById("hora");
+
+    if (relogio) {
+        relogio.textContent = hora + ":" + minuto;
+    }
+}
+
+setInterval(atualizarHora, 1000);
+atualizarHora();
+
+const entrada = document.getElementById("entrada");
+
+entrada.addEventListener("keydown", function(event){
+
+    if(event.key !== "Enter") return;
+
+        if(event.key === "F12"){
+
+        event.preventDefault();
+        window.location.href = "case.html";
+
+    }
+
+    const valor = entrada.value.trim();
+
+    if(/^\d{10}$/.test(valor)){
+
+        sessionStorage.setItem("task", valor);
+
+        window.location.href = "position.html";
+    }else{
+        entrada.value = "";
+    }
+
+});
+
+entrada.addEventListener("focus", () => {
+    entrada.blue();
+    entrada.focus();
+});
+
+entrada.addEventListener("input", function() {
+    const valor = entrada.value.trim();
+
+    if(/^\d{10}$/.test(valor)){
+        sessionStorage.setItem("task", valor);
+        window.location.href = "position.html";
+    }
+})
