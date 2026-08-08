@@ -98,16 +98,33 @@ lc.addEventListener("input", function () {
                 // Tarefa FRC
                 window.location.href = "pickingFRC.html";
 
-            } else {
+    }else{
 
-                // Caso não exista tipo definido
-                window.location.href = "../index.html";
+        lc.value = "";
+        lc.focus();
 
-            }
+    }
 
-        } else {
+});
 
-            // LC incorreto
+entrada.addEventListener("focus", () => {
+    entrada.blue();
+    entrada.focus();
+});
+
+stage.addEventListener("input", function() {
+    if(stage.value.trim().length === 7){
+        lc.focus();
+    }
+});
+
+lc.addEventListener("input", function() {
+    if(lc.value.trim().length === 2){
+        
+        if(/^[A-Z][0-9]$/.test(lc.value.trim().toUpperCase())){
+            // próxima tela
+            window.location.href = "pickingFRC.html";
+        }else{
             lc.value = "";
             lc.focus();
 

@@ -21,6 +21,7 @@ setInterval(atualizarHora, 1000);
 atualizarHora();
 
 
+
 // ===============================
 // TASK
 // ===============================
@@ -49,10 +50,53 @@ const lot = document.getElementById("lot");
 const skuCorreto = "H2253608";
 const lotCorreto = "58YD3K";
 
+// ENTER no SKU
+sku.addEventListener("keydown", function(event){
 
-// ===============================
-// SKU
-// ===============================
+    if(event.key !== "Enter") return;
+
+    if(sku.value.trim().toUpperCase() === skuCorreto){
+
+        lot.focus();
+
+    }else{
+
+        sku.value = "";
+        sku.focus();
+
+    }
+
+});
+
+// ENTER no LOT
+lot.addEventListener("keydown", function(event){
+
+    if(event.key !== "Enter") return;
+
+    
+    if(lot.value.trim().toUpperCase() === lotCorreto){
+
+        // próxima tela
+        window.location.href = "stage.html";
+
+    }else{
+
+        sku.value = "";
+        lot.focus();
+
+    }
+
+});
+
+entrada.addEventListener("focus", () => {
+    entrada.blur();
+    entrada.focus();
+});
+
+const sku = document.getElementById("sku");
+const lot = document.getElementById("lot");
+
+const skuCorreto = "H2253608";
 
 sku.addEventListener("input", function () {
 
@@ -76,10 +120,7 @@ sku.addEventListener("input", function () {
     }
 });
 
-
-// ===============================
-// LOT
-// ===============================
+const lotCorreto = "58YD3K";
 
 lot.addEventListener("input", function () {
 
