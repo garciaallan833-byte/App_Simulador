@@ -98,17 +98,19 @@ lc.addEventListener("input", function () {
                 // Tarefa FRC
                 window.location.href = "pickingFRC.html";
 
-    }else{
+            }
+        } else {
+
 
         lc.value = "";
         lc.focus();
 
     }
-
+    }
 });
 
 entrada.addEventListener("focus", () => {
-    entrada.blue();
+    entrada.blur();
     entrada.focus();
 });
 
