@@ -132,6 +132,10 @@ def carton():
 @app.route("/pickingFRC.html", methods=["GET"])
 def pickingFRC():
     return render_template('pickingFRC.html')
+  
+@app.route("/pickingDRT.html", methods=["GET"])
+def pickingDRT():
+    return render_template('pickingDRT.html')
 
 @app.route("/position.html", methods=["GET"])
 def position():
