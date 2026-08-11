@@ -1,3 +1,7 @@
+// ===============================
+// RELÓGIO
+// ===============================
+
 function atualizarHora() {
 
     const agora = new Date();
@@ -15,42 +19,166 @@ function atualizarHora() {
 setInterval(atualizarHora, 1000);
 atualizarHora();
 
+
+// ===============================
+// CAMPO DA TASK
+// ===============================
+
 const entrada = document.getElementById("entrada");
 
-entrada.addEventListener("keydown", function(event){
 
-    if(event.key !== "Enter") return;
+// ===============================
+// F12 → VOLTAR
+// ===============================
 
-        if(event.key === "F12"){
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "F12") {
 
         event.preventDefault();
+
         window.location.href = "case.html";
 
     }
 
+});
+
+
+// ===============================
+// MENSAGEM
+// ===============================
+
+function mostrarErro() {
+
+    let erro = document.getElementById("erro-task");
+
+    if (!erro) {
+
+        erro = document.createElement("div");
+
+        erro.id = "erro-task";
+        erro.textContent = "Invalid Task";
+
+        erro.style.color = "white";
+        erro.style.marginTop = "8px";
+
+        entrada.parentElement.appendChild(erro);
+
+    }
+
+}
+
+
+// ===============================
+// LIMPAR MENSAGEM
+// ===============================
+
+function limparErro() {
+
+    const erro = document.getElementById("erro-task");
+
+    if (erro) {
+        erro.remove();
+    }
+
+}
+
+
+// ===============================
+// VALIDAR TASK
+// ===============================
+
+function validarTask() {
+
     const valor = entrada.value.trim();
 
-    if(/^\d{10}$/.test(valor)){
+    limparErro();
+
+    // Precisa ter exatamente 10 números
+    if (!/^\d{10}$/.test(valor)) {
+
+        mostrarErro();
+
+        entrada.value = "";
+        entrada.focus();
+
+        return;
+
+    }
+
+
+    // ===============================
+    // PROCURA NO DICIONÁRIO
+    // ===============================
+
+    const tarefa = tarefas[valor];
+
+
+    // ===============================
+    // TASK CADASTRADA
+    // ===============================
+
+    if (tarefa) {
 
         sessionStorage.setItem("task", valor);
 
-        window.location.href = "position.html";
-    }else{
-        entrada.value = "";
+        sessionStorage.setItem(
+            "dadosTarefa",
+            JSON.stringify(tarefa)
+        );
+
     }
 
+
+    // ===============================
+    // TASK NÃO CADASTRADA
+    // ===============================
+
+    else {
+
+        // Guarda apenas o número da Task
+        sessionStorage.setItem("task", valor);
+
+        // Remove dados de uma tarefa anterior
+        sessionStorage.removeItem("dadosTarefa");
+
+    }
+
+
+    // ===============================
+    // SEGUE PARA POSITION
+    // ===============================
+
+    window.location.href = "position.html";
+
+}
+
+
+// ===============================
+// ENTER
+// ===============================
+
+entrada.addEventListener("keydown", function(event) {
+
+    if (event.key !== "Enter") return;
+
+    validarTask();
+
 });
 
-entrada.addEventListener("focus", () => {
-    entrada.blue();
-    entrada.focus();
-});
+
+// ===============================
+// BIP AUTOMÁTICO
+// ===============================
 
 entrada.addEventListener("input", function() {
+
     const valor = entrada.value.trim();
 
-    if(/^\d{10}$/.test(valor)){
-        sessionStorage.setItem("task", valor);
-        window.location.href = "position.html";
+    if (valor.length === 10) {
+
+        validarTask();
+
     }
-})
+
+});

@@ -33,13 +33,32 @@ const lc = document.getElementById("lc");
 // ===============================
 
 const tipoTarefa = sessionStorage.getItem("tipoTarefa");
+const dadosSalvos = JSON.parse(sessionStorage.getItem("dadosTarefa"));
+
+// ===============================
+// RENDERIZAÇÃO DOS DADOS
+// ===============================
+function formatarPosicao(posicao) {
+    const novaPosicao = posicao.slice(0, 2) + "-" + posicao.slice(2, 5) + "-" + posicao.slice(5, 7);
+    return novaPosicao.toUpperCase();
+}
+
+const posicao = document.getElementById("location");
+const container = document.getElementById("container");
+
+if (dadosSalvos) {
+    posicao.textContent = formatarPosicao(dadosSalvos.stage);
+    container.textContent = dadosSalvos.linhas[0].container;
+}
 
 
 // ===============================
 // STAGE CORRETO
 // ===============================
 
-const stageCorreto = "STG0641";
+const stageCorreto = dadosSalvos.stage;   
+
+
 
 
 // ===============================
@@ -109,28 +128,9 @@ lc.addEventListener("input", function () {
     }
 });
 
-entrada.addEventListener("focus", () => {
-    entrada.blur();
-    entrada.focus();
-});
 
 stage.addEventListener("input", function() {
     if(stage.value.trim().length === 7){
         lc.focus();
     }
-});
-
-lc.addEventListener("input", function() {
-    if(lc.value.trim().length === 2){
-        
-        if(/^[A-Z][0-9]$/.test(lc.value.trim().toUpperCase())){
-            // próxima tela
-            window.location.href = "pickingFRC.html";
-        }else{
-            lc.value = "";
-            lc.focus();
-
-        }
-    }
-
 });

@@ -42,7 +42,6 @@ entrada.addEventListener("keydown", function(event){
 
 });
 
-entrada.addEventListener("focus", () => {
-    entrada.blur();
+document.addEventListener("DOMContentLoaded", function() {
     entrada.focus();
 });

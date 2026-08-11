@@ -27,6 +27,7 @@ atualizarHora();
 // ===============================
 
 const task = sessionStorage.getItem("task");
+const dadosSalvos = JSON.parse(sessionStorage.getItem("dadosTarefa"));
 
 const elementoTask = document.getElementById("task");
 
@@ -42,13 +43,12 @@ if (task && elementoTask) {
 const sku = document.getElementById("sku");
 const lot = document.getElementById("lot");
 
-
 // ===============================
 // VALORES CORRETOS
 // ===============================
 
-const skuCorreto = "H2253608";
-const lotCorreto = "58YD3K";
+const skuCorreto = dadosSalvos.linhas[0].sku;
+const lotCorreto = dadosSalvos.linhas[0].lote;
 
 // ENTER no SKU
 sku.addEventListener("keydown", function(event){
@@ -88,16 +88,6 @@ lot.addEventListener("keydown", function(event){
 
 });
 
-entrada.addEventListener("focus", () => {
-    entrada.blur();
-    entrada.focus();
-});
-
-const sku = document.getElementById("sku");
-const lot = document.getElementById("lot");
-
-const skuCorreto = "H2253608";
-
 sku.addEventListener("input", function () {
 
     const valor = sku.value.trim().toUpperCase();
@@ -119,8 +109,6 @@ sku.addEventListener("input", function () {
         }
     }
 });
-
-const lotCorreto = "58YD3K";
 
 lot.addEventListener("input", function () {
 
