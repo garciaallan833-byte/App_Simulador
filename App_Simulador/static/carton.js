@@ -15,7 +15,9 @@ atualizarHora();
 
 const carton = document.getElementById("carton");
 
-const cartonCorreto = "00000203200764777551";
+const dadosSalvos = window.sessionStorage.getItem('dadosTarefa')
+
+const cartonCorreto = JSON.parse(dadosSalvos)['linhas'][0].cartons[0];
 
 carton.addEventListener("keydown", function(event){
 

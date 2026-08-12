@@ -9,6 +9,10 @@ const tarefas = {
             {
                 tarefa: "0006078315",
                 container: "00100203200764777626",
+                cartons: [
+                    "00000203200764777551"
+                ],
+                
                 posicao: "CD03001",
                 sku: "H0068528",
                 lote: "58A605",

@@ -7,7 +7,7 @@ if(event.key === "F12"){
         event.preventDefault();
         window.location.href = "case.html";
     } else if (window.location.pathname.endsWith("case.html")) {
-            window.location.href = "../templates/index.html";
+            window.location.href = "index.html";
         } else {
             event.preventDefault();
             history.back();

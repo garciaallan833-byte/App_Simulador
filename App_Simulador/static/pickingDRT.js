@@ -127,6 +127,11 @@ function validarTask() {
             JSON.stringify(tarefa)
         );
 
+    // ===============================
+    // SEGUE PARA POSITION
+    // ===============================
+    window.location.href = "position.html";
+
     }
 
 
@@ -142,14 +147,16 @@ function validarTask() {
         // Remove dados de uma tarefa anterior
         sessionStorage.removeItem("dadosTarefa");
 
+        mostrarErro()
+
+        entrada.value = "";
+        entrada.focus();
+
+        return;
     }
 
 
-    // ===============================
-    // SEGUE PARA POSITION
-    // ===============================
 
-    window.location.href = "position.html";
 
 }
 
