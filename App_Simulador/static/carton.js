@@ -1,57 +1,168 @@
-function atualizarHora(){
+// ===============================
+// RELÓGIO
+// ===============================
+
+function atualizarHora() {
 
     const agora = new Date();
 
-    const hora = String(agora.getHours()).padStart(2,"0");
-    const minuto = String(agora.getMinutes()).padStart(2,"0");
+    const hora = String(agora.getHours()).padStart(2, "0");
+    const minuto = String(agora.getMinutes()).padStart(2, "0");
 
-    document.getElementById("hora").textContent = hora + ":" + minuto;
+    const relogio = document.getElementById("hora");
 
+    if (relogio) {
+        relogio.textContent = hora + ":" + minuto;
+    }
 }
 
-setInterval(atualizarHora,1000);
+setInterval(atualizarHora, 1000);
 atualizarHora();
 
 
-const carton = document.getElementById("carton");
+// ===============================
+// DADOS DA TAREFA
+// ===============================
 
-const dadosSalvos = window.sessionStorage.getItem('dadosTarefa')
+const dadosSalvos =
+    sessionStorage.getItem("dadosTarefa");
 
-const cartonCorreto = JSON.parse(dadosSalvos)['linhas'][0].cartons[0];
+if (!dadosSalvos) {
 
-carton.addEventListener("keydown", function(event){
+    window.location.href = "case.html";
 
-    if(event.key !== "Enter") return;
+}
 
-    if(carton.value.trim() === cartonCorreto){
+const tarefa = JSON.parse(dadosSalvos);
 
-        // próxima tela
-        window.location.href = "conf.html";
 
-    }else{
+// ===============================
+// CARTONS
+// ===============================
 
-        carton.value = "";
-        carton.focus();
+const cartons = tarefa['linhas'][0].cartons;
 
-    }
+const entrada =
+    document.getElementById("carton");
 
-});
+const cartoInfo = document.getElementById('carton-info')
+const skuInfo = document.getElementById('sku')
+const qtdInfo = document.getElementById('quantidade')
+const qtdInfo2 = document.getElementById('entrada')
 
-entrada.addEventListener("focus", () => {
-    entrada.blue();
-    entrada.focus();
-});
+skuInfo.textContent = tarefa['linhas'][0]['sku']
+qtdInfo.textContent = tarefa['linhas'][0]['quantidade']
+qtdInfo2.value = tarefa['linhas'][0]['quantidade']
+qtdInfo2.style = "text-align: right;"
 
-carton.addEventListener("input", function() {
 
-    const valor = carton.value.trim();
-    if(valor.length === cartonCorreto.length){
-        if(valor === cartonCorreto){
-            // próxima tela
+// ===============================
+// CARTON ATUAL
+// ===============================
+
+let cartonAtual = Number(
+    sessionStorage.getItem("cartonAtual")
+);
+
+if (isNaN(cartonAtual)) {
+    cartonAtual = 0;
+}
+
+cartoInfo.textContent = cartons[cartonAtual]
+
+// ===============================
+// VALIDAR CARTON
+// ===============================
+
+
+function validarCarton() {
+
+    const valor =
+        entrada.value.trim().toUpperCase();
+
+
+    // Carton atual esperado
+    const cartonCorreto =
+        cartons[cartonAtual].toUpperCase(); 
+
+
+    // ===============================
+    // VERIFICA
+    // ===============================
+
+    if (valor === cartonCorreto) {
+
+        cartonAtual++;
+
+        sessionStorage.setItem(
+            "cartonAtual",
+            cartonAtual
+        );
+
+        cartoInfo.textContent = cartons[cartonAtual]
+
+
+        // ===============================
+        // TERMINOU TODOS?
+        // ===============================
+
+        if (cartonAtual >= cartons.length) {
+
+            // Todos os cartons foram bipados
+            sessionStorage.removeItem("cartonAtual");
+
             window.location.href = "conf.html";
-        }else{
-            carton.value = "";
-            carton.focus();
+
+            return;
         }
+
+
+        // ===============================
+        // PRÓXIMO CARTON
+        // ===============================
+
+        entrada.value = "";
+        entrada.focus();
+
+    } else {
+
+        // Carton errado
+        entrada.value = "";
+        entrada.focus();
+
     }
+
+}
+
+
+// ===============================
+// BIP AUTOMÁTICO
+// ===============================
+
+entrada.addEventListener("input", function () {
+
+    const valor = entrada.value.trim();
+
+    const cartonCorreto =
+        cartons[cartonAtual];
+
+    if (valor.length === cartonCorreto.length) {
+
+        validarCarton();
+
+    }
+
+});
+
+
+// ===============================
+// ENTER
+// ===============================
+
+entrada.addEventListener("keydown", function (event) {
+
+    if (event.key !== "Enter") return;
+
+    validarCarton();
+
 });

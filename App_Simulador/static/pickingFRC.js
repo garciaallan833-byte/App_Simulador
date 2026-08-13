@@ -26,6 +26,8 @@ atualizarHora();
 
 const entrada = document.getElementById("entrada");
 
+sessionStorage.removeItem("cartonAtual");
+
 
 // ===============================
 // F12 → VOLTAR

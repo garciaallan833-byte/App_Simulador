@@ -18,13 +18,19 @@ function atualizarHora() {
 
 setInterval(atualizarHora, 1000);
 atualizarHora();
+
+
 // ===============================
 // DADOS DO LOAD
 // ===============================
 
-const dadosContainer = JSON.parse(
-    sessionStorage.getItem("dadosContainer")
-);
+const dadosContainerSalvos =
+    sessionStorage.getItem("dadosContainer");
+
+const dadosContainer = dadosContainerSalvos
+    ? JSON.parse(dadosContainerSalvos)
+    : null;
+
 
 // ===============================
 // CAMPOS
@@ -39,97 +45,228 @@ const lc = document.getElementById("lc");
 // ===============================
 
 const tipoTarefa = sessionStorage.getItem("tipoTarefa");
-const dadosSalvos = JSON.parse(sessionStorage.getItem("dadosTarefa"));
+
+const dadosTarefaSalvos =
+    sessionStorage.getItem("dadosTarefa");
+
+const dadosSalvos = dadosTarefaSalvos
+    ? JSON.parse(dadosTarefaSalvos)
+    : null;
 
 
 // ===============================
-// RENDERIZAÇÃO DOS DADOS
-// ===============================
-function formatarPosicao(posicao) {
-    const novaPosicao = posicao.slice(0, 2) + "-" + posicao.slice(2, 5) + "-" + posicao.slice(5, 7);
-    return novaPosicao.toUpperCase();
-}
-
-const posicao = document.getElementById("location");
-const container = document.getElementById("container");
-
-if (dadosSalvos) {
-    posicao.textContent = formatarPosicao(dadosContainer['stage']);
-    container.textContent = dadosSalvos.linhas[0].container;
-}
-
-
-// ===============================
-// STAGE CORRETO
+// VERIFICAÇÃO
 // ===============================
 
-const stageCorreto = dadosContainer['stage'];   
+if (!stage || !lc) {
 
-// ===============================
-// STAGE
-// ===============================
+    console.error(
+        "Erro: os campos #stage ou #lc não foram encontrados no HTML."
+    );
 
-stage.addEventListener("input", function () {
+} else if (!dadosContainer) {
 
-    const valor = stage.value.trim().toUpperCase();
+    console.error(
+        "Erro: dadosContainer não encontrado no sessionStorage."
+    );
 
-    // STG0641 = 7 caracteres
-    if (valor.length === stageCorreto.length) {
+} else {
+
+    // ===============================
+    // RENDERIZAÇÃO DOS DADOS
+    // ===============================
+
+    function formatarPosicao(posicao) {
+
+        if (!posicao) return "";
+
+        const novaPosicao =
+            posicao.slice(0, 2) + "-" +
+            posicao.slice(2, 5) + "-" +
+            posicao.slice(5, 7);
+
+        return novaPosicao.toUpperCase();
+    }
+
+
+    const posicao = document.getElementById("location");
+    const container = document.getElementById("container");
+
+
+    // ===============================
+    // MOSTRAR DADOS
+    // ===============================
+
+    if (posicao) {
+
+        posicao.textContent =
+            formatarPosicao(dadosContainer.stage);
+
+    }
+
+
+    if (container && dadosSalvos) {
+
+        if (
+            dadosSalvos.linhas &&
+            dadosSalvos.linhas.length > 0
+        ) {
+
+            container.textContent =
+                dadosSalvos.linhas[0].container;
+
+        }
+
+    }
+
+
+    // ===============================
+    // STAGE CORRETO
+    // ===============================
+
+    const stageCorreto =
+        dadosContainer.stage.toUpperCase();
+
+
+    // ===============================
+    // STAGE
+    // ===============================
+
+    stage.addEventListener("input", function () {
+
+        const valor =
+            stage.value.trim().toUpperCase();
+
+
+        if (valor.length === stageCorreto.length) {
+
+            if (valor === stageCorreto) {
+
+                // Stage correto
+                // NÃO finaliza ainda
+                lc.focus();
+
+            } else {
+
+                // Stage incorreto
+                stage.value = "";
+                stage.focus();
+
+            }
+
+        }
+
+    });
+
+
+    // ===============================
+    // ENTER NO STAGE
+    // ===============================
+
+    stage.addEventListener("keydown", function (event) {
+
+        if (event.key !== "Enter") return;
+
+        const valor =
+            stage.value.trim().toUpperCase();
+
 
         if (valor === stageCorreto) {
 
-            // Stage correto → vai para LC
             lc.focus();
 
         } else {
 
-            // Stage incorreto
             stage.value = "";
             stage.focus();
 
         }
-    }
 
-});
+    });
 
 
-// ===============================
-// LC
-// ===============================
+    // ===============================
+    // LC
+    // ===============================
 
-lc.addEventListener("input", function () {
+    lc.addEventListener("input", function () {
 
-    const valor = lc.value.trim().toUpperCase();
+        const valor =
+            lc.value.trim().toUpperCase();
 
-    // H7 = 2 caracteres
-    if (valor.length === 2) {
 
-        // Sempre letra + número
+        if (valor.length === 2) {
+
+            // Letra + número
+            if (/^[A-Z][0-9]$/.test(valor)) {
+
+                finalizarFluxo();
+
+            } else {
+
+                lc.value = "";
+                lc.focus();
+
+            }
+
+        }
+        });
+
+
+    // ===============================
+    // ENTER NO LC
+    // ===============================
+
+    lc.addEventListener("keydown", function (event) {
+
+        if (event.key !== "Enter") return;
+
+        const valor =
+            lc.value.trim().toUpperCase();
+
+
         if (/^[A-Z][0-9]$/.test(valor)) {
 
-            // ===============================
-            // FINALIZA A TAREFA
-            // ===============================
+            finalizarFluxo();
 
-            if (tipoTarefa === "direta") {
-
-                // Tarefa DRT
-                window.location.href = "pickingDRT.html";
-
-            } else if (tipoTarefa === "fracionada") {
-
-                // Tarefa FRC
-                window.location.href = "pickingFRC.html";
-            } else if (tipoTarefa === "load"){
-
-                window.location.href = "case.html"
-            }
         } else {
 
+            lc.value = "";
+            lc.focus();
 
-        lc.value = "";
-        lc.focus();
+        }
 
-    }
-    }
 });
+
+
+// ===============================
+// FINALIZAR
+// ===============================
+
+function finalizarFluxo() {
+
+    if (tipoTarefa === "direta") {
+
+            // DRT
+            window.location.href = "pickingDRT.html";
+
+        } else if (tipoTarefa === "fracionada") {
+
+            // FRC
+            window.location.href = "pickingFRC.html";
+
+        } else if (tipoTarefa === "load") {
+
+            // LOAD
+            window.location.href = "case.html";
+
+        } else {
+
+            // Segurança
+            window.location.href = "case.html";
+
+        }
+
+    }
+
+}
