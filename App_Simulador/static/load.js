@@ -21,7 +21,7 @@ atualizarHora();
 
 
 // ===============================
-// CAMPO DA TASK
+// CAMPO DO CONTAINER
 // ===============================
 
 const entrada = document.getElementById("entrada");
@@ -45,27 +45,27 @@ document.addEventListener("keydown", function(event) {
 
 
 // ===============================
-// MENSAGEM
+// MENSAGEM DE ERRO
 // ===============================
 
-function mostrarErro(mensagem){
-    
+function mostrarErro() {
+
     let erro = document.getElementById("erro-task");
 
     if (!erro) {
 
         erro = document.createElement("div");
 
-        erro.id = "erro-task"
+        erro.id = "erro-task";
+        erro.textContent = "Invld cont/tsk/trk#";
 
-        erro.style.color = "white"
+        erro.style.color = "white";
         erro.style.marginTop = "8px";
 
         entrada.parentElement.appendChild(erro);
+
     }
 
-    erro.textContent = mensagem;
-    
 }
 
 
@@ -85,19 +85,23 @@ function limparErro() {
 
 
 // ===============================
-// VALIDAR TASK
+// VALIDAR CONTAINER / PLT
 // ===============================
 
-function validarTask() {
+function validarContainer() {
 
-    const valor = entrada.value.trim();
+    const valor = entrada.value.trim().toUpperCase();
 
     limparErro();
 
-    // Precisa ter exatamente 10 números
-    if (!/^\d{10}$/.test(valor)) {
 
-        mostrarErro("Invalid Task");
+    // ===============================
+    // PRECISA TER EXATAMENTE 20 CARACTERES
+    // ===============================
+
+    if (valor.length !== 20) {
+
+        mostrarErro();
 
         entrada.value = "";
         entrada.focus();
@@ -108,54 +112,61 @@ function validarTask() {
 
 
     // ===============================
-    // PROCURA NO DICIONÁRIO
+    // PROCURA O CONTAINER
     // ===============================
 
-    const tarefa = tarefas[valor];
+    const container = containers[valor];
+
 
     // ===============================
-    // TASK CADASTRADA
+    // CONTAINER CADASTRADO
     // ===============================
 
-    if (!tarefa) {
+    if (container) {
 
-        sessionStorage.setItem("task", valor);
+        // Guarda o número do container
+        sessionStorage.setItem("container", valor);
 
-        sessionStorage.removeItem("dadosTarefa");
-        
-        mostrarErro("Task Not Found");
+        // Guarda os dados encontrados
+        sessionStorage.setItem(
+            "dadosContainer",
+            JSON.stringify(container)
+        );
+
+        // Guarda diretamente o Stage
+        sessionStorage.setItem(
+            "stage",
+            container.stage
+        );
+
+
+        // ===============================
+        // SEGUE PARA A TELA DE STAGE
+        // ===============================
+
+        window.location.href = "stage.html"
+
+    }
+
+
+    // ===============================
+    // CONTAINER NÃO CADASTRADO
+    // ===============================
+
+    else {
+
+        mostrarErro();
 
         entrada.value = "";
         entrada.focus();
 
         return;
+
     }
 
-    if (tarefa.tipo !== "direta") {
-
-        sessionStorage.setItem("task", valor);
-
-        sessionStorage.removeItem("dadosTarefa");
-
-        mostrarErro("Invalid Task Type");
-
-        entrada.value = "";
-        entrada.focus();
-
-        return;
-    }
-
-    sessionStorage.setItem("task", valor);
-
-    sessionStorage.setItem(
-        "dadosTarefa",
-        JSON.stringify(tarefa)
-    );
-    // ===============================
-    // SEGUE PARA POSITION
-    // ===============================
-    window.location.href = "position.html";
 }
+
+
 // ===============================
 // ENTER
 // ===============================
@@ -164,7 +175,7 @@ entrada.addEventListener("keydown", function(event) {
 
     if (event.key !== "Enter") return;
 
-    validarTask();
+    validarContainer();
 
 });
 
@@ -177,9 +188,12 @@ entrada.addEventListener("input", function() {
 
     const valor = entrada.value.trim();
 
-    if (valor.length === 10) {
+    // Ao completar 20 caracteres,
+    // valida automaticamente
 
-        validarTask();
+    if (valor.length === 20) {
+
+        validarContainer();
 
     }
 

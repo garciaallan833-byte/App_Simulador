@@ -43,31 +43,29 @@ document.addEventListener("keydown", function(event) {
 
 });
 
-
 // ===============================
 // MENSAGEM
 // ===============================
 
-function mostrarErro() {
-
+function mostrarErro(mensagem){
+    
     let erro = document.getElementById("erro-task");
 
     if (!erro) {
 
         erro = document.createElement("div");
 
-        erro.id = "erro-task";
-        erro.textContent = "Invalid Task";
+        erro.id = "erro-task"
 
-        erro.style.color = "white";
+        erro.style.color = "white"
         erro.style.marginTop = "8px";
 
         entrada.parentElement.appendChild(erro);
-
     }
 
-}
+    erro.textContent = mensagem;
 
+}
 
 // ===============================
 // LIMPAR MENSAGEM
@@ -83,7 +81,6 @@ function limparErro() {
 
 }
 
-
 // ===============================
 // VALIDAR TASK
 // ===============================
@@ -97,7 +94,7 @@ function validarTask() {
     // Precisa ter exatamente 10 números
     if (!/^\d{10}$/.test(valor)) {
 
-        mostrarErro();
+        mostrarErro("Invalid Task");
 
         entrada.value = "";
         entrada.focus();
@@ -113,41 +110,17 @@ function validarTask() {
 
     const tarefa = tarefas[valor];
 
-
     // ===============================
     // TASK CADASTRADA
     // ===============================
 
-    if (tarefa) {
+    if (!tarefa) {
 
         sessionStorage.setItem("task", valor);
 
-        sessionStorage.setItem(
-            "dadosTarefa",
-            JSON.stringify(tarefa)
-        );
-
-    // ===============================
-    // SEGUE PARA POSITION
-    // ===============================
-    window.location.href = "position.html";
-
-    }
-
-
-    // ===============================
-    // TASK NÃO CADASTRADA
-    // ===============================
-
-    else {
-
-        // Guarda apenas o número da Task
-        sessionStorage.setItem("task", valor);
-
-        // Remove dados de uma tarefa anterior
         sessionStorage.removeItem("dadosTarefa");
-
-        mostrarErro()
+        
+        mostrarErro("Task Not Found");
 
         entrada.value = "";
         entrada.focus();
@@ -155,11 +128,32 @@ function validarTask() {
         return;
     }
 
+    if (tarefa.tipo !== "fracionada") {
 
+        sessionStorage.setItem("task", valor);
 
+        sessionStorage.removeItem("dadosTarefa");
 
+        mostrarErro("Invalid Task Type");
+
+        entrada.value = "";
+        entrada.focus();
+
+        return;
+    }
+
+    sessionStorage.setItem("task", valor);
+
+    sessionStorage.setItem(
+        "dadosTarefa",
+        JSON.stringify(tarefa)
+    );
+
+    // ===============================
+    // SEGUE PARA POSITION
+    // ===============================
+    window.location.href = "position.html";
 }
-
 
 // ===============================
 // ENTER

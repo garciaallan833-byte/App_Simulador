@@ -18,7 +18,13 @@ function atualizarHora() {
 
 setInterval(atualizarHora, 1000);
 atualizarHora();
+// ===============================
+// DADOS DO LOAD
+// ===============================
 
+const dadosContainer = JSON.parse(
+    sessionStorage.getItem("dadosContainer")
+);
 
 // ===============================
 // CAMPOS
@@ -35,6 +41,7 @@ const lc = document.getElementById("lc");
 const tipoTarefa = sessionStorage.getItem("tipoTarefa");
 const dadosSalvos = JSON.parse(sessionStorage.getItem("dadosTarefa"));
 
+
 // ===============================
 // RENDERIZAÇÃO DOS DADOS
 // ===============================
@@ -47,7 +54,7 @@ const posicao = document.getElementById("location");
 const container = document.getElementById("container");
 
 if (dadosSalvos) {
-    posicao.textContent = formatarPosicao(dadosSalvos.stage);
+    posicao.textContent = formatarPosicao(dadosContainer['stage']);
     container.textContent = dadosSalvos.linhas[0].container;
 }
 
@@ -56,10 +63,7 @@ if (dadosSalvos) {
 // STAGE CORRETO
 // ===============================
 
-const stageCorreto = dadosSalvos.stage;   
-
-
-
+const stageCorreto = dadosContainer['stage'];   
 
 // ===============================
 // STAGE
@@ -116,7 +120,9 @@ lc.addEventListener("input", function () {
 
                 // Tarefa FRC
                 window.location.href = "pickingFRC.html";
+            } else if (tipoTarefa === "load"){
 
+                window.location.href = "case.html"
             }
         } else {
 
@@ -125,12 +131,5 @@ lc.addEventListener("input", function () {
         lc.focus();
 
     }
-    }
-});
-
-
-stage.addEventListener("input", function() {
-    if(stage.value.trim().length === 7){
-        lc.focus();
     }
 });

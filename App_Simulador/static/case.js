@@ -35,6 +35,11 @@ entrada.addEventListener("keydown", function(event){
         sessionStorage.setItem("tipoTarefa", "direta");
 
         window.location.href = "pickingDRT.html";
+    }else if (valor === "3") {
+
+        sessionStorage.setItem("tipoTarefa", "load");
+
+        window.location.href = "load.html";
     } else {
         entrada.value = "";
         entrada.focus();

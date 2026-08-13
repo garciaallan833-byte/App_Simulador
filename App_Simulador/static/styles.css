@@ -247,3 +247,14 @@ input:focus{
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
+.entrada-load input{
+    width: 245px;
+    background:black;
+    border:none;
+    border-bottom:2px solid #00ff33;
+    color:#00ff33;
+    font-size:22px;
+    font-family:Consolas, monospace;
+    outline:none;
+}
