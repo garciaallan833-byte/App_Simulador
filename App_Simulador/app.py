@@ -137,6 +137,10 @@ def pickingFRC():
 def pickingDRT():
     return render_template('pickingDRT.html')
 
+@app.route("/load.html", methods=["GET"])
+def load():
+    return render_template('load.html')
+
 @app.route("/position.html", methods=["GET"])
 def position():
     return render_template('position.html')
