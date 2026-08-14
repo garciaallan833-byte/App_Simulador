@@ -158,4 +158,4 @@ if __name__ == "__main__":
     sb.run(['cls'], shell=True)
     sb.run(['title', 'App', 'Simulacao'], shell=True)
     sb.run(['color', '3'], shell=True)
-    socketio.run(app, host="0.0.0.0", port=3000, debug=True, use_reloader=False)
+    socketio.run(app, host="0.0.0.0", port=5500, debug=True, use_reloader=False)
