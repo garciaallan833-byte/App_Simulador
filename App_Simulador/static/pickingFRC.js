@@ -151,6 +151,11 @@ function validarTask() {
         JSON.stringify(tarefa)
     );
 
+    sessionStorage.setItem(
+        "dadosContainer",
+        JSON.stringify(containers[tarefa.linhas[0]['container']])
+    );
+
     // ===============================
     // SEGUE PARA POSITION
     // ===============================
