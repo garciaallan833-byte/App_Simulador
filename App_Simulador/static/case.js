@@ -48,5 +48,7 @@ entrada.addEventListener("keydown", function(event){
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+    sessionStorage.removeItem('dadosContainer')
+    sessionStorage.removeItem('dadosTarefa')
     entrada.focus();
 });
